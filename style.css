@@ -62,6 +62,11 @@ body {
   tr:nth-child(even) td {
     background-color: #f9f9f9;
   }
+
+  footer {
+    text-align: center;
+    margin-top: 100px;
+  }
   
   @media screen and (max-width: 600px) {
     body {

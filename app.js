@@ -79,13 +79,13 @@ function displayPlanning(planning, jours) {
 
       section.appendChild(tableWrapper);
 
-      // ✅ Bouton d'export Excel
+      // Bouton d'export Excel
       const exportBtn = document.createElement("button");
       exportBtn.textContent = "Exporter vers Excel";
       exportBtn.style.marginTop = "15px";
       exportBtn.style.padding = "8px 12px";
       exportBtn.style.border = "none";
-      exportBtn.style.backgroundColor = "#3498db";
+      exportBtn.style.backgroundColor = "#29c056";
       exportBtn.style.color = "white";
       exportBtn.style.borderRadius = "6px";
       exportBtn.style.cursor = "pointer";
@@ -100,7 +100,7 @@ function displayPlanning(planning, jours) {
   });
 }
 
-// ✅ Fonction d'export vers Excel
+// Fonction d'export vers Excel
 function exportTableToExcel(table, filename = "table") {
   const wb = XLSX.utils.book_new();
   const ws = XLSX.utils.table_to_sheet(table);

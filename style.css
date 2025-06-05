@@ -32,12 +32,15 @@ body {
   
   
   h2 {
-    text-transform: capitalize;
     border-bottom: 2px solid #3498db;
     padding-bottom: 8px;
     margin-bottom: 20px;
     font-size: 1.4rem;
     color: #34495e;
+  }
+
+  h3 {
+    text-transform: capitalize;
   }
   
   table {

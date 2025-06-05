@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Préparation des examens</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+
+</head>
+<body>
+
+  <h1>Préparation des examens</h1>
+
+  <h2>Création du CSV :</h2>
+  <ul>
+    <li>Ouvrir client Celcat lourd</li>
+    <li>Outils => Assistant Office</li>
+    <li>Equipes</li>
+    <li>Emploi du temps</li>
+    <li>Configurer : choisir la semaine et cocher tous les créneaux horaires</li>
+    <li>Parcourir : *exam</li>
+    <li>Fichier de sortie : \\tsclient\C\Users\jbran\Documents\Planif examens\liste exam 1ère semaine.csv</li>
+</ul>
+
+<h2>Importation du CSV</h2>
+  <input type="file" id="fileInput" accept=".csv">
+
+  <div id="planning"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

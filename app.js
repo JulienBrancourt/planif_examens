@@ -8,16 +8,18 @@ document.getElementById("fileInput").addEventListener("change", function (e) {
     const text = decoder.decode(e.target.result);
     parseCSV(text);
   };
-  reader.readAsArrayBuffer(file); // Important pour bien gérer l'encodage
+  reader.readAsArrayBuffer(file); // gestion de l'encodage !!
 });
 
 function parseCSV(content) {
-  const rows = content.trim().split(/\r?\n/);
+  const rows = content.trim().split(/\r?\n/); //trim supprime les espaces, split sépare les différentes lignes
   const planning = {};
   const jours = ["lundi", "mardi", "mercredi", "jeudi", "vendredi"];
 
-  rows.slice(1).forEach(line => {
-    const cols = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(s => s.replace(/^"|"$/g, '').trim());
+  rows.slice(1).forEach(line => { //slice(1) permet d'ignorer l'élément 0 du tableau, c-a-d l'en-tête
+    const cols = line
+      .split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/) //Sépare la ligne CSV en colonnes, sans découper les virgules à l’intérieur des guillemets
+      .map(s => s.replace(/^"|"$/g, '').trim()); //supprime les guillemets ouvrants/fermants s'ils existent, puis avec trim on supprime les espaces en début/fin
 
     const [day, start, end, , category, moduleFull] = cols;
 
@@ -26,7 +28,9 @@ function parseCSV(content) {
     const jour = day.toLowerCase();
     if (!jours.includes(jour)) return;
 
-    const moduleName = moduleFull.includes(" - ") ? moduleFull.split(" - ")[1] : moduleFull;
+    const moduleName = moduleFull.includes(" - ")
+      ? moduleFull.split(" - ")[1] //coupe la chaîne sur " - " et on prend la partie après (index 1)
+      : moduleFull;
     const time = `${start} - ${end}`;
 
     if (!planning[jour]) planning[jour] = [];
@@ -42,7 +46,7 @@ function displayPlanning(planning, jours) {
 
   jours.forEach(jour => {
     if (planning[jour]) {
-      planning[jour].sort((a, b) => a.start.localeCompare(b.start));
+      planning[jour].sort((a, b) => a.start.localeCompare(b.start)); //localeCompare() compare les chaînes en tenant compte de l’ordre alphabétique local
 
       const section = document.createElement("section");
       const title = document.createElement("h3");
